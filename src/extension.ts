@@ -1,12 +1,16 @@
 import * as vscode from 'vscode';
-import { EasyOllamaPanel } from './webview/panel';
+import { registerCommandOpenPanel } from './webview';
+import { getCurrentEasyOllamaStatusBar } from './status-bar';
 
 export function activate(context: vscode.ExtensionContext) {
-	const openPanel = vscode.commands.registerCommand('easy-ollama.openEasyOllamaPanel', () => {
-		EasyOllamaPanel.createOrShow(context.extensionUri);
-	});
+	const disposable = registerCommandOpenPanel(context);
+	const statusBar = getCurrentEasyOllamaStatusBar();
 
-	context.subscriptions.push(openPanel);
+	context.subscriptions.push(disposable);
+	context.subscriptions.push(statusBar.getStatusBarItem());
+	
+	statusBar.updateStatusBarItem('idle');
+	statusBar.showStatusBarItem(true);
 }
 
 export function deactivate() {}

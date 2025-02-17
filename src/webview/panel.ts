@@ -7,6 +7,7 @@ import {
 	getNonce,
 	getWebviewOptions
 } from './helpers';
+import { getCurrentEasyOllamaStatusBar } from '../status-bar';
 
 export class EasyOllamaPanel {
 	public static currentPanel: EasyOllamaPanel | undefined;
@@ -55,12 +56,17 @@ export class EasyOllamaPanel {
 
 		this._panel.webview.onDidReceiveMessage(async (message: any) => {
 			if (message.command === 'prompt') {
+				const statusBar = getCurrentEasyOllamaStatusBar();
 				const prompt = message.text;
 				let responseText = '';
+
+				statusBar.updateStatusBarItem('start');
 
 				try {
 					this._panel.webview.postMessage({ command: 'promptResponseStart', text: 'start' });
 
+					statusBar.updateStatusBarItem('generating...');
+					
 					const streamResponse = await ollama.chat({
 						model: getModel(),
 						messages: [{ role: 'user', content: prompt }],
@@ -73,9 +79,12 @@ export class EasyOllamaPanel {
 					}
 
 					this._panel.webview.postMessage({ command: 'promptResponseEnd', text: 'end' });
+					statusBar.updateStatusBarItem('end');
 				} catch (error) {
 					errorHandler('make sure that Ollama is running in background');
 				}
+
+				statusBar.updateStatusBarItem('end');
 			}
 		}, null, this._disposables);
 	}
