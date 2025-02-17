@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import ollama from 'ollama';
+import * as llm from '../llm';
 import {
 	errorHandler,
 	getHtml,
@@ -67,11 +67,7 @@ export class EasyOllamaPanel {
 
 					statusBar.updateStatusBarItem('generating...');
 					
-					const streamResponse = await ollama.chat({
-						model: getModel(),
-						messages: [{ role: 'user', content: prompt }],
-						stream: true
-					});
+					const streamResponse = await llm.getStreamResponse(prompt);
 
 					for await (const part of streamResponse) {
 						responseText += part.message.content;
