@@ -22,7 +22,11 @@ export default function getHtml(webview: Webview, styleUri: Uri, scriptUri: Uri,
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
-          Description and instructions to this extensions.
+          <div class="mb-5">Description and instructions to this extensions.</div>
+
+          <div class="w-full mb-5">
+            <div id="code"></div>
+          </div>
         </div>
         <div class="w-full flex flex-col justify-center items-center mb-5">
           <div class="w-full flex justify-center items-center mb-5">

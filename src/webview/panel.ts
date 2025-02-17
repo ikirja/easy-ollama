@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as llm from '../llm';
 import {
 	errorHandler,
+	getCodeSnippets,
 	getHtml,
 	getNonce,
 	getWebviewOptions
@@ -71,6 +72,9 @@ export class EasyOllamaPanel {
 						responseText += part.message.content;
 						this._panel.webview.postMessage({ command: 'promptResponse', text: responseText });
 					}
+
+					const codeSnippets = getCodeSnippets(responseText);
+					codeSnippets.forEach(snippet => this._panel.webview.postMessage({ command: 'promptResponseCodeSnippet', text: snippet.text }));
 
 					this._panel.webview.postMessage({ command: 'promptResponseEnd', text: 'end' });
 					statusBar.updateStatusBarItem('end');

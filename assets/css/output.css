@@ -521,11 +521,32 @@
   .visible {
     visibility: visible;
   }
+  .absolute {
+    position: absolute;
+  }
   .relative {
     position: relative;
   }
   .static {
     position: static;
+  }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
+  .top-2 {
+    top: calc(var(--spacing) * 2);
+  }
+  .top-5 {
+    top: calc(var(--spacing) * 5);
+  }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
+  .right-2 {
+    right: calc(var(--spacing) * 2);
+  }
+  .right-5 {
+    right: calc(var(--spacing) * 5);
   }
   .ms-3 {
     margin-inline-start: calc(var(--spacing) * 3);
@@ -542,32 +563,20 @@
   .grid {
     display: grid;
   }
+  .hidden {
+    display: none;
+  }
   .min-h-50 {
     min-height: calc(var(--spacing) * 50);
   }
-  .min-h-screen {
-    min-height: 100vh;
-  }
-  .w-100 {
-    width: calc(var(--spacing) * 100);
-  }
   .w-full {
     width: 100%;
-  }
-  .min-w-1\/2 {
-    min-width: calc(1/2 * 100%);
-  }
-  .min-w-100 {
-    min-width: calc(var(--spacing) * 100);
   }
   .cursor-pointer {
     cursor: pointer;
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .flex-col {
     flex-direction: column;
@@ -594,6 +603,9 @@
   .border-slate-300 {
     border-color: var(--color-slate-300);
   }
+  .bg-green-400 {
+    background-color: var(--color-green-400);
+  }
   .bg-purple-700 {
     background-color: var(--color-purple-700);
   }
@@ -605,9 +617,6 @@
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
-  }
-  .text-center {
-    text-align: center;
   }
   .text-3xl {
     font-size: var(--text-3xl);
@@ -641,6 +650,20 @@
       font-style: italic;
     }
   }
+  .hover\:bg-green-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-600);
+      }
+    }
+  }
+  .hover\:bg-green-800 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-800);
+      }
+    }
+  }
   .hover\:bg-purple-800 {
     &:hover {
       @media (hover: hover) {
@@ -668,6 +691,11 @@
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
+    }
+  }
+  .active\:bg-green-800 {
+    &:active {
+      background-color: var(--color-green-800);
     }
   }
   .active\:bg-purple-900 {
