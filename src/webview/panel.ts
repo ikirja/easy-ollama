@@ -3,7 +3,6 @@ import * as llm from '../llm';
 import {
 	errorHandler,
 	getHtml,
-	getModel,
 	getNonce,
 	getWebviewOptions
 } from './helpers';
@@ -61,11 +60,10 @@ export class EasyOllamaPanel {
 				let responseText = '';
 
 				statusBar.updateStatusBarItem('start');
+				statusBar.updateStatusBarItem('generating...');
 
 				try {
 					this._panel.webview.postMessage({ command: 'promptResponseStart', text: 'start' });
-
-					statusBar.updateStatusBarItem('generating...');
 					
 					const streamResponse = await llm.getStreamResponse(prompt);
 
@@ -81,6 +79,7 @@ export class EasyOllamaPanel {
 				}
 
 				statusBar.updateStatusBarItem('end');
+				statusBar.updateStatusBarItem('idle');
 			}
 		}, null, this._disposables);
 	}

@@ -1,5 +1,5 @@
 import ollama from 'ollama';
-import { getModel } from '../webview/helpers';
+import { getModel } from '../config';
 
 export function getStreamResponse(prompt: string) {
   return ollama.chat({

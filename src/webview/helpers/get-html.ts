@@ -1,5 +1,5 @@
 import { Uri, Webview } from 'vscode';
-import getModel from './get-model';
+import { getModel } from '../../config';
 
 export default function getHtml(webview: Webview, styleUri: Uri, scriptUri: Uri, nonce: string): string {
   const model = getModel();
