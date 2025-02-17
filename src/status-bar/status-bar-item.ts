@@ -1,10 +1,12 @@
 import * as vscode from 'vscode';
 
+const ALIGNMENT_PRIORITY = 1;
+
 export class EasyOllamaStatusBar {
   private readonly _statusBarItem: vscode.StatusBarItem;
 
   constructor() {
-    this._statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1000);
+    this._statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, ALIGNMENT_PRIORITY);
   }
 
   public getStatusBarItem(): vscode.StatusBarItem {
