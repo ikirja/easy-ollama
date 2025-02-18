@@ -46,7 +46,7 @@ export default function getHtml(webview: Webview, styleUri: Uri, scriptUri: Uri,
             <div id="code"></div>
           </div>
         </div>
-        <div class="w-full flex flex-col justify-center items-center mb-5">
+        <div class="w-full flex flex-col justify-start items-center mb-5">
           <div class="w-full flex justify-center items-center mb-5">
             <input
               id="prompt-input"
