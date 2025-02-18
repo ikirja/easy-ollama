@@ -1,11 +1,16 @@
 (function () {
   const vscode = acquireVsCodeApi();
   const codeBlock = document.getElementById('code');
+  const clearSnippetsButton = document.getElementById('clear-snippets-button');
   const promptInput = document.getElementById('prompt-input');
   const sendButton = document.getElementById('send-button');
   const responseWindow = document.getElementById('response-window');
   const topDiv = document.getElementById('top');
   const bottomDiv = document.getElementById('bottom');
+
+  clearSnippetsButton.addEventListener('click', () => {
+    codeBlock.innerHTML = '';
+  });
 
   sendButton.addEventListener('click', () => {
     const text = promptInput.value;

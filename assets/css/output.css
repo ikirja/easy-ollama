@@ -581,12 +581,18 @@
   .rounded-md {
     border-radius: var(--radius-md);
   }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
   .border-slate-300 {
     border-color: var(--color-slate-300);
+  }
+  .bg-cyan-400 {
+    background-color: var(--color-cyan-400);
   }
   .bg-green-400 {
     background-color: var(--color-green-400);
@@ -635,6 +641,13 @@
       font-style: italic;
     }
   }
+  .hover\:bg-cyan-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-cyan-600);
+      }
+    }
+  }
   .hover\:bg-green-600 {
     &:hover {
       @media (hover: hover) {
@@ -669,6 +682,11 @@
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
+    }
+  }
+  .active\:bg-cyan-800 {
+    &:active {
+      background-color: var(--color-cyan-800);
     }
   }
   .active\:bg-green-800 {

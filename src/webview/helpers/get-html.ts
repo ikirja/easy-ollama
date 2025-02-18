@@ -35,6 +35,13 @@ export default function getHtml(webview: Webview, styleUri: Uri, scriptUri: Uri,
           <h2 class="text-xl font-bold">${codeSnippetsTitle}</h2>
           <div class="mb-5">${codeSnippetsDesc}</div>
 
+          <button
+            id="clear-snippets-button"
+            class="cursor-pointer rounded-xl bg-cyan-400 hover:bg-cyan-600 active:bg-cyan-800 text-white px-3 py-2 disabled:opacity-25 mb-5"
+          >
+            Clear Snippets
+          </button>
+
           <div class="w-full mb-5">
             <div id="code"></div>
           </div>
