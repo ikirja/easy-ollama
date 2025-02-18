@@ -6,6 +6,12 @@ Extension for use of Ollama inside VSCode.
 
 Easy-Ollama extension provides simple interface to interact with Ollama service inside your usual workspace in Visual Studio Code. It allows to send prompt to one of predefined models, shows generated text. And, if there's any code in response, it will show code snippets, with ability to copy it to clipboard.
 
+## Currently supported languages for code snippets:
+- HTML
+- CSS
+- JavaScript
+
+## Example
 Here's an example of usage:
 
 ![How to use](https://easyoneweb.ru/easy-ollama.gif)
