@@ -34,6 +34,10 @@ There are currently no known issues.
 
 ## Release Notes
 
+### 0.2.0
+
+Added Clear Snippets button to remove snippets. State for webview, which is destroyed on closing Easy-Ollama panel, but keeps data when switching tabs.
+
 ### 0.1.0
 
 Initial working version.
