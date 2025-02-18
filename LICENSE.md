@@ -1,1 +1,1 @@
-ISC
+Easy-Ollama extension is free to use and be modified. EOW, EasyOneWeb, EasyOneWeb LLC logos are trademarks of EasyOneWeb LLC, all rights reserved.
