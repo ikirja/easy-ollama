@@ -5,6 +5,7 @@ import {
 	getCodeSnippets,
 	getHtml,
 	getNonce,
+	getText,
 	getWebviewOptions
 } from './helpers';
 import { getCurrentEasyOllamaStatusBar } from '../status-bar';
@@ -111,7 +112,8 @@ export class EasyOllamaPanel {
 		const stylePath = vscode.Uri.joinPath(this._extensionUri, 'assets/css', 'output.css');
 		const styleUri = webview.asWebviewUri(stylePath);
 
-		this._panel.title = 'Easy-Ollama Chat';
+		const { title } = getText();
+		this._panel.title = title;
 		this._panel.webview.html = getHtml(webview, styleUri, scriptUri, nonce);
 	}
 }

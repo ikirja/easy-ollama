@@ -1,8 +1,16 @@
 import { Uri, Webview } from 'vscode';
 import { getModel } from '../../config';
+import getText from './get-text';
 
 export default function getHtml(webview: Webview, styleUri: Uri, scriptUri: Uri, nonce: string): string {
   const model = getModel();
+  const {
+    title,
+    modelTitle,
+    instructions,
+    codeSnippetsTitle,
+    codeSnippetsDesc
+  } = getText();
 
   return /*html*/ `
     <!DOCTYPE html>
@@ -12,17 +20,20 @@ export default function getHtml(webview: Webview, styleUri: Uri, scriptUri: Uri,
       <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; img-src ${webview.cspSource} https:; script-src 'nonce-${nonce}';">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="${styleUri}" rel="stylesheet">
-      <title>Easy-Ollama Chat</title>
+      <title>${title}</title>
     </head>
     <body>
       <div id="top"></div>
 
-      <h1 class="text-3xl font-bold mb-5">Easy-Ollama Chat</h1>
-      <div class="text-xl mb-5">Model selected: ${model}</div>
+      <h1 class="text-3xl font-bold mb-5">${title}</h1>
+      <div class="text-xl mb-5">${modelTitle} ${model}</div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
-          <div class="mb-5">Description and instructions to this extensions.</div>
+          <div class="mb-5">${instructions}</div>
+
+          <h2 class="text-xl font-bold">${codeSnippetsTitle}</h2>
+          <div class="mb-5">${codeSnippetsDesc}</div>
 
           <div class="w-full mb-5">
             <div id="code"></div>
