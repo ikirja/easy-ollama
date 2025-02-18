@@ -1,7 +1,7 @@
 {
   "name": "easy-ollama",
   "displayName": "Easy-Ollama",
-  "description": "Extension for easy use of Ollama inside VSCode. Developed by EasyOneWeb LLC.",
+  "description": "Extension for use of Ollama inside VSCode. Developed by EasyOneWeb LLC.",
   "version": "0.1.0",
   "publisher": "",
   "repository": {
@@ -13,8 +13,19 @@
     "vscode": "^1.97.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Machine Learning",
+    "Education"
   ],
+  "keywords": [
+    "llm",
+    "ollama",
+    "nlp",
+    "deepseek",
+    "llama"
+  ],
+  "preview": true,
+  "icon": "assets/img/logo.jpg",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
