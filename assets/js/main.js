@@ -8,8 +8,11 @@
   const topDiv = document.getElementById('top');
   const bottomDiv = document.getElementById('bottom');
 
+  stateRestore();
+
   clearSnippetsButton.addEventListener('click', () => {
     codeBlock.innerHTML = '';
+    stateSet();
   });
 
   sendButton.addEventListener('click', () => {
@@ -52,10 +55,36 @@
         navigator.clipboard.writeText(text);
       });
     }
+
+    stateSet();
   });
 
   function disableControl(disable) {
     promptInput.disabled = disable;
     sendButton.disabled = disable;
+  }
+
+  function stateRestore() {
+    const previousState = vscode.getState();
+
+    if (!previousState) {
+      return;
+    }
+
+    codeBlock.innerHTML = previousState.codeSnippets;
+    promptInput.value = previousState.prompt;
+    responseWindow.innerText = previousState.response;
+  }
+
+  function stateSet() {
+    const codeSnippets = codeBlock.innerHTML;
+    const prompt = promptInput.value;
+    const response = responseWindow.innerText;
+
+    vscode.setState({
+      codeSnippets,
+      prompt,
+      response
+    });
   }
 })();
