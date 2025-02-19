@@ -16,7 +16,7 @@ Here's an example of usage:
 
 ![How to use](https://easyoneweb.ru/easy-ollama.gif)
 
-> Tip: Currently there's no chat capability, so one promt - one answer, with previous context. Please, keep that in mind.
+> Tip: Currently there's no chat capability, so one prompt - one answer, without previous context. Please, keep that in mind.
 
 ## Requirements
 
