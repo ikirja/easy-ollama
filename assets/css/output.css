@@ -578,6 +578,12 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .overflow-x-scroll {
+    overflow-x: scroll;
+  }
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }

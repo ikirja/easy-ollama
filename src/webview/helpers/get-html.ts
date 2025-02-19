@@ -62,13 +62,11 @@ export default function getHtml(webview: Webview, styleUri: Uri, scriptUri: Uri,
             </button>
           </div>
 
-          <div id="response-window" class="w-full min-h-50 text-black bg-white border border-slate-300 rounded-md py-2 px-3 shadow-md">
+          <div id="response-window" class="w-full min-h-50 text-black bg-white border border-slate-300 rounded-md py-2 px-3 shadow-md overflow-hidden overflow-x-scroll">
             Answer will be displayed here.
           </div>
         </div>
       </div>
-
-      <div id="bottom"></div>
 
       <script nonce="${nonce}" src="${scriptUri}"></script>
     </body>

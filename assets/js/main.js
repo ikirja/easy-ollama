@@ -6,7 +6,8 @@
   const sendButton = document.getElementById('send-button');
   const responseWindow = document.getElementById('response-window');
   const topDiv = document.getElementById('top');
-  const bottomDiv = document.getElementById('bottom');
+
+  const BOUNDING_TOP = responseWindow.getBoundingClientRect().top;
 
   stateRestore();
 
@@ -29,7 +30,11 @@
 
     if (command === 'promptResponse') {
       responseWindow.innerText = text;
-      bottomDiv.scrollIntoView();
+
+      const boundingRect = responseWindow.getBoundingClientRect(); 
+      if (boundingRect.height > 500) {
+        window.scrollTo(0, boundingRect.height - BOUNDING_TOP * 2);
+      }
     }
 
     if (command === 'promptResponseEnd') {
@@ -42,7 +47,7 @@
       const html = /*html*/`
         <div class="relative text-black bg-white border border-slate-300 rounded-md py-2 px-3 shadow-md mb-5">
           <button id="${id}" class="absolute top-2 right-2 bg-green-400 hover:bg-green-600 active:bg-green-800 border border-slate-300 rounded-md py-2 px-3 shadow-md cursor-pointer">Copy</button>
-          <pre data-id="${id}"></pre>
+          <pre data-id="${id}" class="overflow-hidden overflow-x-scroll"></pre>
         </div>  
       `;
       codeBlock.innerHTML = codeBlock.innerHTML + html;
