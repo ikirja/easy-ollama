@@ -39,29 +39,36 @@
 
     if (command === 'promptResponseCodeSnippet') {
       const id = String(Math.random()).split('.')[1];
-      const code = /*html*/`
+      const html = /*html*/`
         <div class="relative text-black bg-white border border-slate-300 rounded-md py-2 px-3 shadow-md mb-5">
           <button id="${id}" class="absolute top-2 right-2 bg-green-400 hover:bg-green-600 active:bg-green-800 border border-slate-300 rounded-md py-2 px-3 shadow-md cursor-pointer">Copy</button>
           <pre data-id="${id}"></pre>
         </div>  
       `;
-      codeBlock.innerHTML = codeBlock.innerHTML + code;
-
-      const preBlock = document.querySelector(`[data-id="${id}"]`);
-      const button = document.getElementById(id);
-      preBlock.textContent = text;
-
-      button.addEventListener('click', (event) => {
-        navigator.clipboard.writeText(text);
-      });
+      codeBlock.innerHTML = codeBlock.innerHTML + html;
+      document.querySelector(`[data-id="${id}"]`).textContent = text;
     }
 
+    setCopyButtonsController();
     stateSet();
   });
 
   function disableControl(disable) {
     promptInput.disabled = disable;
     sendButton.disabled = disable;
+  }
+
+  function setCopyButtonsController() {
+    const preBlocks = document.querySelectorAll('pre');
+
+    preBlocks.forEach(block => {
+      const id = block.dataset.id;
+      const button = document.getElementById(id);
+
+      button.addEventListener('click', () => {
+        navigator.clipboard.writeText(block.textContent);
+      });
+    });
   }
 
   function stateRestore() {
@@ -74,6 +81,8 @@
     codeBlock.innerHTML = previousState.codeSnippets;
     promptInput.value = previousState.prompt;
     responseWindow.innerText = previousState.response;
+
+    setCopyButtonsController();
   }
 
   function stateSet() {
