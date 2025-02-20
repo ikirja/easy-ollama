@@ -75,7 +75,7 @@ export class EasyOllamaPanel {
 					}
 
 					const codeSnippets = getCodeSnippets(responseText);
-					codeSnippets.forEach(snippet => this._panel.webview.postMessage({ command: 'promptResponseCodeSnippet', text: snippet.text }));
+					codeSnippets.forEach(snippet => this._panel.webview.postMessage({ command: 'promptResponseCodeSnippet', text: snippet.type + '@@@' + snippet.text }));
 
 					this._panel.webview.postMessage({ command: 'promptResponseEnd', text: 'end' });
 					statusBar.updateStatusBarItem('end');

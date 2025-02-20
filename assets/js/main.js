@@ -44,14 +44,20 @@
 
     if (command === 'promptResponseCodeSnippet') {
       const id = String(Math.random()).split('.')[1];
+      const [ lang, code ] = text.split('@@@');
+
       const html = /*html*/`
-        <div class="relative text-black bg-white border border-slate-300 rounded-md py-2 px-3 shadow-md mb-5">
+        <div class="relative text-black bg-white border border-slate-300 rounded-md py-2 px-3 shadow-md mb-10">
+          <div class="absolute -top-5 left-2 bg-purple-400 text-white rounded-md px-2 py-1">
+            Language: <span data-language="${id}" class="font-bold">${lang}</span>
+          </div>
           <button id="${id}" class="absolute top-2 right-2 bg-green-400 hover:bg-green-600 active:bg-green-800 border border-slate-300 rounded-md py-2 px-3 shadow-md cursor-pointer">Copy</button>
           <pre data-id="${id}" class="overflow-hidden overflow-x-scroll"></pre>
         </div>  
       `;
+
       codeBlock.innerHTML = codeBlock.innerHTML + html;
-      document.querySelector(`[data-id="${id}"]`).textContent = text;
+      document.querySelector(`[data-id="${id}"]`).textContent = code;
     }
 
     setCopyButtonsController();

@@ -37,7 +37,7 @@ export default function getHtml(webview: Webview, styleUri: Uri, scriptUri: Uri,
 
           <button
             id="clear-snippets-button"
-            class="cursor-pointer rounded-xl bg-cyan-400 hover:bg-cyan-600 active:bg-cyan-800 text-white px-3 py-2 disabled:opacity-25 mb-5"
+            class="cursor-pointer rounded-xl bg-cyan-400 hover:bg-cyan-600 active:bg-cyan-800 text-white px-3 py-2 disabled:opacity-25 mb-10"
           >
             Clear Snippets
           </button>
