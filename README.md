@@ -10,6 +10,10 @@ Easy-Ollama extension provides simple interface to interact with Ollama service 
 - HTML
 - CSS
 - JavaScript
+- JSON
+- Python
+- Go
+- Rust
 
 ## Example
 Here's an example of usage:
@@ -34,9 +38,16 @@ There are currently no known issues.
 
 ## Release Notes
 
+### 0.3.0
+
+- Works in background
+- Code Snippet language badge
+- Additional languages support for Code Snippets: JSON, Python, Go, Rust
+
 ### 0.2.0
 
-Added Clear Snippets button to remove snippets. State for webview, which is destroyed on closing Easy-Ollama panel, but keeps data when switching tabs.
+- Clear Snippets button to remove snippets
+- State for webview, which is destroyed on closing Easy-Ollama panel, but keeps data when switching tabs
 
 ### 0.1.0
 

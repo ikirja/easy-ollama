@@ -2,7 +2,7 @@
   "name": "easy-ollama",
   "displayName": "Easy-Ollama",
   "description": "Extension for use of Ollama inside VSCode. Developed by EasyOneWeb LLC.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "easyonewebllc",
   "repository": {
     "type": "git",
